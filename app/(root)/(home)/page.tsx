@@ -1,14 +1,16 @@
 import MeetingTypeList from "@/components/MeetingTypeList";
+const { DateTime } = require("luxon");
 
 import React from "react";
 
 const Home = () => {
-  const now = new Date();
+  // Get the current time in the Indian time zone
+  const now = DateTime.now().setZone("Asia/Kolkata");
 
-  const time = now.toLocaleTimeString("en-IN", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  // Format the time in the desired format
+  const time = now.toFormat("hh:mm a");
+
+
   const date = new Intl.DateTimeFormat("en-US", { dateStyle: "full" }).format(
     now
   );
